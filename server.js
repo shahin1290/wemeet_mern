@@ -10,10 +10,10 @@ connectDB()
 app.use(express.json({ extended: false }))
 
 // Define Routes
-app.use('/api/users', require('./config//routes/api/users'))
-app.use('/api/auth', require('./config/routes/api/auth'))
-app.use('/api/profile', require('./config/routes/api/profile'))
-app.use('/api/groups', require('./config/routes/api/groups'))
+app.use('/api/users', require('./routes/api/users'))
+app.use('/api/auth', require('./routes/api/auth'))
+app.use('/api/profile', require('./routes/api/profile'))
+app.use('/api/groups', require('./routes/api/groups'))
 
 
 const PORT = process.env.PORT || 5000
