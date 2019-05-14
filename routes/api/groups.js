@@ -18,6 +18,7 @@ router.post('/', [
   try {
 
     const newGroup = {
+      user: req.user.id,
       name: req.body.name,
       description: req.body.description,
       location: req.body.location
@@ -63,6 +64,27 @@ router.get('/:id', async(req,res) => {
   }
 })
 
+router.delete('/:id', auth, async(req,res) => {
+  try {
+    const group = await Group.findById(req.params.id)
 
+    if(!group) {
+      return res.status(404).json({ msg: 'Group not found' })
+    }
+
+    if(group.user.toString() !== req.user.id){
+      return res.status(401).json({ msg: 'User not authorized' })
+    }
+    
+    await group.remove()
+    res.json({ msg: 'Group removed' })
+  } catch (error) {
+    console.error(error.message)
+    if(error.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Group not found' })
+    }
+    res.status(500).send('Server Error')
+  }
+})
 
 module.exports = router
