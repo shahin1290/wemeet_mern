@@ -4,22 +4,6 @@ const auth = require('../../middleware/auth')
 const Group = require('../../models/Group')
 const { check, validationResult } = require('express-validator/check');
 
-
-router.get('/me', auth, async(req,res) => {
-  try {
-    const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar'])
-
-    if(!profile){
-      return res.status(400).json({ msg: 'There is no profile for this user' })
-    }
-
-    res.json(profile)
-  } catch (error) {
-    console.error(error.message)
-    res.status(500).send('Server Error')
-  }
-})
-
 router.post('/', [
   auth,
   check('name', 'Name is required').not().isEmpty(),
@@ -49,7 +33,34 @@ router.post('/', [
     console.error(error.message)
     res.status(500).send('Server error')
   }
+})
 
+router.get('/', async(req,res) => {
+  try {
+    const groups = await Group.find().sort({ date: -1 })
+
+    res.json(groups)
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error')
+  }
+})
+
+router.get('/:id', async(req,res) => {
+  try {
+    const group = await Group.findById(req.params.id)
+
+    if(!group) {
+      return res.status(404).json({ msg: 'Group not found' })
+    }
+    res.json(group)
+  } catch (error) {
+    console.error(error.message)
+    if(error.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Group not found' })
+    }
+    res.status(500).send('Server Error')
+  }
 })
 
 
