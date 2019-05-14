@@ -6,7 +6,8 @@ const profileSchema = new mongoose.Schema({
    ref: 'user'
  },
  location: {
-   type: String
+   type: String,
+   required: true
  },
  bio: {
    type: String
