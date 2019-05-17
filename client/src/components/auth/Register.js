@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 import FormControl  from "@material-ui/core/FormControl";
 import  InputLabel  from "@material-ui/core/InputLabel";
 import  Input  from "@material-ui/core/Input";
 import  Button  from "@material-ui/core/Button";
-import { connect } from 'react-redux';
 
 
 const Register = () => {
@@ -19,17 +20,38 @@ const Register = () => {
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
   
 
-  const handleSignup = (e) => {
+  const handleSignup = async e => {
     e.preventDefault()
     if(password !== password_confirmation){
       console.log('Password do not match')
     }else{
-      console.log(formData)
+      console.log('Success')
+      // const newUser = {
+      //   name,
+      //   email,
+      //   password
+      // }
+
+      // try {
+      //   const config  = {
+      //     headers: {
+      //       'Content-type': 'application/json'
+      //     }
+      //   }
+        
+      //   const body = JSON.stringify(newUser)
+
+      //   const res = await axios.post('/api/users', body, config)
+
+      //   console.log(res.data)
+      // } catch (err) {
+      //   console.error(err.response.data)
+      // }
     }
   }
 
   return (
-    <div
+    <Fragment
       style={{
         display: "flex",
         justifyContent: "center",
@@ -63,7 +85,9 @@ const Register = () => {
             Submit
         </Button>
       </form>
-    </div>
+      <p>AlreadyDon't have a account? <Link to='/login'>Sign in</Link>
+      </p>
+    </Fragment>
   );
 }
 
