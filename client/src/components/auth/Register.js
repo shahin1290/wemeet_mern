@@ -1,13 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setAlert } from '../../actions/alert'
 import axios from 'axios'
 import FormControl  from "@material-ui/core/FormControl";
 import  InputLabel  from "@material-ui/core/InputLabel";
 import  Input  from "@material-ui/core/Input";
 import  Button  from "@material-ui/core/Button";
+import PropTypes from 'prop-types';
 
 
-const Register = () => {
+const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +26,7 @@ const Register = () => {
   const handleSignup = async e => {
     e.preventDefault()
     if(password !== password_confirmation){
-      console.log('Password do not match')
+      setAlert('Password do not match', 'danger')
     }else{
       console.log('Success')
       // const newUser = {
@@ -91,5 +94,7 @@ const Register = () => {
   );
 }
 
-
-export default Register
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired
+}
+export default connect(null, { setAlert })(Register)
