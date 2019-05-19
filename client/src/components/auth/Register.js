@@ -8,6 +8,7 @@ import  InputLabel  from "@material-ui/core/InputLabel";
 import  Input  from "@material-ui/core/Input";
 import  Button  from "@material-ui/core/Button";
 import PropTypes from 'prop-types';
+import { REMOVE_ALERT } from '../../actions/types';
 
 
 const Register = ({ setAlert }) => {
@@ -29,27 +30,6 @@ const Register = ({ setAlert }) => {
       setAlert('Password do not match', 'danger')
     }else{
       console.log('Success')
-      // const newUser = {
-      //   name,
-      //   email,
-      //   password
-      // }
-
-      // try {
-      //   const config  = {
-      //     headers: {
-      //       'Content-type': 'application/json'
-      //     }
-      //   }
-        
-      //   const body = JSON.stringify(newUser)
-
-      //   const res = await axios.post('/api/users', body, config)
-
-      //   console.log(res.data)
-      // } catch (err) {
-      //   console.error(err.response.data)
-      // }
     }
   }
 
