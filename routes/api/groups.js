@@ -8,7 +8,8 @@ router.post('/', [
   auth,
   check('name', 'Name is required').not().isEmpty(),
   check('description', 'Description is required').not().isEmpty(),
-  check('location', 'Location is required').not().isEmpty()
+  check('location', 'Location is required').not().isEmpty(),
+  check('category', 'Category is required').not().isEmpty()
 ], async (req,res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -21,7 +22,8 @@ router.post('/', [
       user: req.user.id,
       name: req.body.name,
       description: req.body.description,
-      location: req.body.location
+      location: req.body.location,
+      category: req.body.category
     }
 
     group = new Group(newGroup)
@@ -36,9 +38,9 @@ router.post('/', [
   }
 })
 
-router.get('/', async(req,res) => {
+router.get('/:category', async(req,res) => {
   try {
-    const groups = await Group.find().sort({ date: -1 })
+    const groups = await Group.find({category: req.params.category}).sort({ date: -1 })
 
     res.json(groups)
   } catch (error) {

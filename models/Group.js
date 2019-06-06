@@ -20,6 +20,10 @@ location: {
  date: {
    type: Date,
    default: Date.now
+ },
+ category: {
+  type: String,
+  required: true
  }
 })
 
