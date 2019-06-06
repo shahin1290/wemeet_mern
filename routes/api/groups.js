@@ -49,6 +49,17 @@ router.get('/:category', async(req,res) => {
   }
 })
 
+router.get('/categories', async(req,res) => {
+  try {
+    const categories = await Group.find({category: req.params.category}).sort({ date: -1 })
+
+    res.json(groups)
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error')
+  }
+})
+
 router.get('/:id', async(req,res) => {
   try {
     const group = await Group.findById(req.params.id)

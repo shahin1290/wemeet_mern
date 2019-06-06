@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import ExploreCategories from '../categories/ExploreCategories'
 
 class Landing extends Component {
   render() {
     return (
       <div>
-        <h1>Home</h1>
+        <ExploreCategories />
       </div>
     );
   }
