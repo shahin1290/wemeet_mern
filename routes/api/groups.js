@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth')
 const Group = require('../../models/Group')
 const { check, validationResult } = require('express-validator/check');
 
-router.post('/', [
+router.post('/groups', [
   auth,
   check('name', 'Name is required').not().isEmpty(),
   check('description', 'Description is required').not().isEmpty(),
@@ -18,12 +18,14 @@ router.post('/', [
 
   try {
 
+    const category = await Category.findOne({ name: req.body.category })
+
     const newGroup = {
       user: req.user.id,
       name: req.body.name,
       description: req.body.description,
       location: req.body.location,
-      category: req.body.category
+      category: category._id
     }
 
     group = new Group(newGroup)
@@ -38,29 +40,9 @@ router.post('/', [
   }
 })
 
-router.get('/:category', async(req,res) => {
-  try {
-    const groups = await Group.find({category: req.params.category}).sort({ date: -1 })
 
-    res.json(groups)
-  } catch (error) {
-    console.error(error.message)
-    res.status(500).send('Server Error')
-  }
-})
 
-router.get('/categories', async(req,res) => {
-  try {
-    const categories = await Group.find({category: req.params.category}).sort({ date: -1 })
-
-    res.json(groups)
-  } catch (error) {
-    console.error(error.message)
-    res.status(500).send('Server Error')
-  }
-})
-
-router.get('/:id', async(req,res) => {
+router.get('/groups/:id', async(req,res) => {
   try {
     const group = await Group.findById(req.params.id)
 
@@ -77,7 +59,7 @@ router.get('/:id', async(req,res) => {
   }
 })
 
-router.delete('/:id', auth, async(req,res) => {
+router.delete('/groups/:id', auth, async(req,res) => {
   try {
     const group = await Group.findById(req.params.id)
 

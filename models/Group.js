@@ -22,9 +22,11 @@ location: {
    default: Date.now
  },
  category: {
-  type: String,
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'category',
   required: true
  }
+
 })
 
 module.exports = Group = mongoose.model('group', GroupSchema)

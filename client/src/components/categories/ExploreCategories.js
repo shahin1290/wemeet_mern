@@ -13,12 +13,12 @@ import Typography from '@material-ui/core/Typography'
 class ExploreCategories extends Component {
   render() {
     let categories = ["Outdoors & Adventure", "Tech", "Family", "Health & Wellness", "Sports & Fitness", "Learning",
-  "photography", "Food & Drink", "Music", "Film", "Arts", "Others"];
+  "photography", "Food & Drink", "Music", "Film", "Arts", "new"];
     const { classes } = this.props;
     let categoriesList = categories.map(category => {
       return (
         <Card className={classes.card}>
-          <CardActionArea component={Link} to={{pathname: `/categories/${category.id}`, state: {category}}}>
+          <CardActionArea component={Link} to={{pathname: `api/groups/${category}`}}>
             <CardMedia
               className={classes.media}
               image={`./assets/images/${category.toLowerCase()}.png`}
