@@ -40,8 +40,6 @@ router.post('/groups', [
   }
 })
 
-
-
 router.get('/groups/:id', async(req,res) => {
   try {
     const group = await Group.findById(req.params.id)
