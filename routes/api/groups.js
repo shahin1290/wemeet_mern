@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth')
 const Group = require('../../models/Group')
 const { check, validationResult } = require('express-validator/check');
 
-router.post('/groups', [
+router.post('/', [
   auth,
   check('name', 'Name is required').not().isEmpty(),
   check('description', 'Description is required').not().isEmpty(),
@@ -37,6 +37,21 @@ router.post('/groups', [
   } catch (error) {
     console.error(error.message)
     res.status(500).send('Server error')
+  }
+})
+
+router.get('/:category', async(req,res) => {
+  try {
+    const category = await Category.findOne({name: req.params.category})
+    const groups = await Group.find({category: category.id})
+
+    if(!category) {
+      return res.status(404).json({ msg: 'Category not found' })
+    }
+    res.json(groups)
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error')
   }
 })
 
