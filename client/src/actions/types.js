@@ -9,3 +9,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const LOGOUT = 'LOGOUT'
 export const GET_GROUPS = 'GET_GROUPS'
 export const GROUP_ERROR = 'GROUP_ERROR'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const CATEGORY_ERROR = 'CATEGORY_ERROR'
+
+  

@@ -19,8 +19,8 @@ router.post('/', [
 
     res.send(category)
 
-  } catch (error) {
-    console.error(error.message)
+  } catch (err) {
+    console.error(err.message)
     res.status(500).send('Server error')
   }
 })
@@ -32,8 +32,8 @@ router.get('/:id', async(req,res) => {
     const category = await Category.findOne({name: req.params.category})
 
     res.json(category)
-  } catch (error) {
-    console.error(error.message)
+  } catch (err) {
+    console.error(err.message)
     res.status(500).send('Server Error')
   }
 })
@@ -43,8 +43,8 @@ router.get('/', async(req,res) => {
     const categories = await Category.find()
 
     res.json(categories)
-  } catch (error) {
-    console.error(error.message)
+  } catch (err) {
+    console.error(err.message)
     res.status(500).send('Server Error')
   }
 })

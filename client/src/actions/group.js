@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { setAlert } from './alert'
 import { GET_GROUPS, GROUP_ERROR } from './types'
 
 export const getGroups = () => async dispatch => {
