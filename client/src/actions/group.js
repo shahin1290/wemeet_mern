@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { GET_GROUPS, GROUP_ERROR } from './types'
 
-export const getGroups = () => async dispatch => {
+export const getGroups = (category_name) => async dispatch => {
   try {
-    const res = await axios.get('/api/groups/new')
-    console.log(res)
+    const res = await axios.get(`/api/groups/${category_name}`)
     dispatch({
       type: GET_GROUPS,
       payload: res.data

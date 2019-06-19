@@ -4,7 +4,6 @@ import { GET_CATEGORIES, CATEGORY_ERROR } from './types'
 export const getCategories = () => async dispatch => {
   try {
     const res = await axios.get('/api/categories')
-    console.log(res)
     dispatch({
       type: GET_CATEGORIES,
       payload: res.data

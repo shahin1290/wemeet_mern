@@ -55,7 +55,7 @@ router.get('/:category', async(req,res) => {
   }
 })
 
-router.get('/groups/:id', async(req,res) => {
+router.get('/:id', async(req,res) => {
   try {
     const group = await Group.findById(req.params.id)
 
@@ -72,7 +72,7 @@ router.get('/groups/:id', async(req,res) => {
   }
 })
 
-router.delete('/groups/:id', auth, async(req,res) => {
+router.delete('/:id', auth, async(req,res) => {
   try {
     const group = await Group.findById(req.params.id)
 

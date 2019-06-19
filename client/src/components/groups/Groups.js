@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { getGroups } from '../../actions/group'
 import GroupItem from './GroupItem'
 
-const Groups = ({ getGroups, group: { groups, loading }}) => {
+const Groups = ({ match, getGroups, group: { groups, loading }}) => {
   useEffect(() => {
-    getGroups()
+    getGroups(match.params.category)
   }, [getGroups])
   return (
     <div>

@@ -21,14 +21,14 @@ const ExploreCategories = ({ classes, getCategories, category: { categories, loa
     let categoriesList = categories.map(category => {
       return (
         <Card className={classes.card}>
-          <CardActionArea component={Link} to={{pathname: `api/groups/${category}`}}>
+          <CardActionArea component={Link} to={{pathname: `/groups/${category.name}`}}>
             <CardMedia
               className={classes.media}
               image={`./assets/images/${category.name.toLowerCase()}.png`}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {category}
+                {category.name}
               </Typography>
             </CardContent>
           </CardActionArea>

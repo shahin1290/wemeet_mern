@@ -40,7 +40,7 @@ router.get('/:id', async(req,res) => {
 
 router.get('/', async(req,res) => {
   try {
-    const categories = await Category.find()
+    const categories = await Category.find().sort({ date: -1 })
 
     res.json(categories)
   } catch (err) {
