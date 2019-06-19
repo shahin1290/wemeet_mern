@@ -39,8 +39,8 @@ function ButtonAppBar({ classes, auth: { isAuthenticated, loading }, logout}) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.grow}>
-            WeMeet
+          <Typography variant="h6" className={classes.grow} >
+            <Link to="/" className={classes.icon}>WeMeet</Link>
           </Typography>
           { signUpLink }
           { logInLink }
