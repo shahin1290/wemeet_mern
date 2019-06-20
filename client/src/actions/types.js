@@ -11,5 +11,6 @@ export const GET_GROUPS = 'GET_GROUPS'
 export const GROUP_ERROR = 'GROUP_ERROR'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const CATEGORY_ERROR = 'CATEGORY_ERROR'
+export const ADD_GROUP = 'ADD_GROUP'
 
   

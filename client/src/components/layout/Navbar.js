@@ -27,7 +27,7 @@ function ButtonAppBar({ classes, auth: { isAuthenticated, loading }, logout}) {
   let signUpLink, logInLink, logOutLink, createGroupLink, profileLink
 
   if(!loading && isAuthenticated ){
-    createGroupLink =  <Button  color="inherit">Create a Group</Button>
+    createGroupLink =  <Button  color="inherit" component={Link} to="/create-group" >Create a Group</Button>
     profileLink = <Button color="inherit">Profile</Button>
     logOutLink =  <Button onClick={logout} color="inherit">LogOut</Button>
   }else {

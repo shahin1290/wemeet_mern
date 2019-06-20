@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Alert from './components/layout/Alert'
 import Groups from './components/groups/Groups'
+import CreateGroup from './components/groups/CreateGroup'
 import setAuthToken from './utils/setAuthToken'
 import {loadUser} from './actions/auth'
 
@@ -34,6 +35,7 @@ const  App = () => {
               <Route exact path='/register' component={Register}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/groups/:category' component={Groups}/>
+              <Route exact path='/create-group' component={CreateGroup}/>
             </Switch>
           </section>
         </Fragment>

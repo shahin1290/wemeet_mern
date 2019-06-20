@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { GET_GROUPS, GROUP_ERROR } from './types'
+import { ADD_GROUP, GET_GROUPS, GROUP_ERROR } from './types'
+import { setAlert } from './alert'
 
 export const getGroups = (category_name) => async dispatch => {
   try {
@@ -15,3 +16,28 @@ export const getGroups = (category_name) => async dispatch => {
     })
   }
 }
+
+// Add group
+export const createGroup = formData => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const res = await axios.post('/api/groups', formData, config);
+
+    dispatch({
+      type: ADD_GROUP,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Group Created', 'success'));
+  } catch (err) {
+    dispatch({
+      type: GROUP_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
