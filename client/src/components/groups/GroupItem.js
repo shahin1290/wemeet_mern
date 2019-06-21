@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 
-const GroupItem = ({ classes, group: {name, description, date, location, user}}) => {
+const GroupItem = ({ classes, group: {name, description, date, location, user, event}}) => {
   return (
     <div>
       <div className={classes.header}>
@@ -41,13 +41,14 @@ const GroupItem = ({ classes, group: {name, description, date, location, user}})
 
             <div style={{ marginLeft: "9rem", marginTop: "2rem", marginBottom: "10rem" }}>
               <h2 style={{ textAlign: 'center'}}>Future events</h2>
-             
+              {event.map(event => 
               <SimpleCard >
-                <h3>event.title</h3>
-                <p>event.description</p>
-                <p>event.location</p>
-                <p>event.date</p>
+                <h3>{event.title}</h3>
+                <p>{event.description}</p>
+                <p>{event.location}</p>
+                <p>{event.date}</p>
               </SimpleCard>
+              )}
             </div>
           </div>    
         </div>  
