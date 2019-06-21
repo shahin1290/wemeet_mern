@@ -25,7 +25,13 @@ location: {
   type: mongoose.Schema.Types.ObjectId,
   ref: 'category',
   required: true
- }
+ },
+ events: [
+   {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'event'
+   }
+ ]
 
 })
 
