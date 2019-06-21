@@ -79,7 +79,7 @@ class CreateGroup extends Component {
       name: formValues.name,
       description: formValues.description,
       location: formValues.location,
-      category_id: formValues.category_id
+      category: formValues.category
     }
     this.props.createGroup(group)
 
@@ -109,7 +109,7 @@ class CreateGroup extends Component {
           component={this.renderTextarea} />   
 
         <Field
-          name="category_id"
+          name="category"
           label="Select a Category"
           component={this.renderSelectOptions} 
         >
