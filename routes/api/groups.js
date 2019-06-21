@@ -95,4 +95,54 @@ router.delete('/:id', auth, async(req,res) => {
   }
 })
 
+router.put(
+  '/:name/event',
+  [
+    auth,
+    [
+      check('title', 'Title is required')
+        .not()
+        .isEmpty(),
+      check('location', 'Location is required')
+        .not()
+        .isEmpty(),
+      check('date', 'Event date is required')
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+      title,
+      location,
+      description,
+      date
+    } = req.body;
+
+    const newEvent = {
+      title,
+      location,
+      description,
+      date
+    };
+
+    try {
+      const group = await Group.findOne({ name: req.params.name });
+
+      group.event.unshift(newEvent);
+
+      await group.save();
+
+      res.json(group);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  })
+  
 module.exports = router

@@ -26,10 +26,27 @@ location: {
   ref: 'category',
   required: true
  },
- events: [
+ event: [
    {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'event'
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user'
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    description: {
+     type: String
+   }, 
+   location: {
+     type: String,
+     required: true
+   },
+   date: {
+     type: Date,
+     required: true
+   }
    }
  ]
 
