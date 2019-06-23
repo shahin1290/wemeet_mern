@@ -12,6 +12,7 @@ import Groups from './components/groups/Groups'
 import CreateGroup from './components/groups/CreateGroup'
 import setAuthToken from './utils/setAuthToken'
 import {loadUser} from './actions/auth'
+import CreateEvent from './components/groups/CreateEvent';
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -36,6 +37,7 @@ const  App = () => {
               <Route exact path='/login' component={Login}/>
               <Route exact path='/groups/:category' component={Groups}/>
               <Route exact path='/create-group' component={CreateGroup}/>
+              <Route exact path='/groups/:name/create-event' component={CreateEvent}/>
             </Switch>
           </section>
         </Fragment>

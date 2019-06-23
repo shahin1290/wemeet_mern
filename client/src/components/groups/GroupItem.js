@@ -26,7 +26,7 @@ const GroupItem = ({ classes, group: {name, description, date, location, user, e
           </div>
           
 
-          <Button component={Link} to="/create-event">Create event</Button> 
+          <Button component={Link} to={`/groups/${name}/create-event`}>Create event</Button> 
 
           <Button>Message group</Button>
         </div>

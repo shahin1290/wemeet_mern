@@ -12,5 +12,7 @@ export const GROUP_ERROR = 'GROUP_ERROR'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const CATEGORY_ERROR = 'CATEGORY_ERROR'
 export const ADD_GROUP = 'ADD_GROUP'
+export const ADD_EVENT = 'ADD_EVENT'
+export const EVENT_ERROR = 'EVENT_ERROR'
 
   
