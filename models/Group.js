@@ -46,7 +46,16 @@ location: {
    date: {
      type: Date,
      required: true
-   }
+   },
+  }
+ ],
+
+ members: [
+   {
+    name: {
+      type: String,
+      required: true
+    }
    }
  ]
 

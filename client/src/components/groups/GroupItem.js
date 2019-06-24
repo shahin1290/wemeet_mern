@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 
 
 const GroupItem = ({ classes, group: {name, description, date, location, user, event}, auth}) => {
-  console.log(auth)
   return (
     <div>
       <div className={classes.header}>
@@ -26,7 +25,7 @@ const GroupItem = ({ classes, group: {name, description, date, location, user, e
               </div>
           </div>
           
-          {user === auth.user._id && (
+          {!auth.loading && user === auth.user._id && (
             <Button component={Link} to={`/groups/${name}/create-event`}>Create event</Button> 
           )}
 
