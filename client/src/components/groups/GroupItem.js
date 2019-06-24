@@ -7,7 +7,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 
-const GroupItem = ({ classes, group: {name, description, date, location, user, event}}) => {
+const GroupItem = ({ classes, group: {name, description, date, location, user, event}, auth}) => {
+  console.log(auth)
   return (
     <div>
       <div className={classes.header}>
@@ -25,8 +26,10 @@ const GroupItem = ({ classes, group: {name, description, date, location, user, e
               </div>
           </div>
           
+          {user === auth.user._id && (
+            <Button component={Link} to={`/groups/${name}/create-event`}>Create event</Button> 
+          )}
 
-          <Button component={Link} to={`/groups/${name}/create-event`}>Create event</Button> 
 
           <Button>Message group</Button>
         </div>
@@ -58,10 +61,9 @@ const GroupItem = ({ classes, group: {name, description, date, location, user, e
 
 GroupItem.propTypes = {
   classes: PropTypes.object.isRequired,
-  group: PropTypes.object.isRequired
+  group: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 }
-
-
 
 
 const styles = {
@@ -92,4 +94,8 @@ const styles = {
   }
 }
 
-export default connect()(withStyles(styles)(GroupItem));
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, {})(withStyles(styles)(GroupItem));

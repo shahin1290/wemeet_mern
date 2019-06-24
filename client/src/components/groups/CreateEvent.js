@@ -87,7 +87,6 @@ class CreateEvent extends Component {
   }
 
   render() {
-    console.log(this.props.match)
      return (
       <div style={{ width: "40%", border: "1px solid grey", margin: "25px auto", background: "white" }}>
       
