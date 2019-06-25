@@ -13,6 +13,7 @@ export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const CATEGORY_ERROR = 'CATEGORY_ERROR'
 export const ADD_GROUP = 'ADD_GROUP'
 export const ADD_EVENT = 'ADD_EVENT'
+export const ADD_MEMBER = 'ADD_MEMBER'
 export const EVENT_ERROR = 'EVENT_ERROR'
 
   
